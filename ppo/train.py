@@ -13,7 +13,6 @@ import torch.nn.functional as F
 import numpy as np
 import shutil
 import matplotlib.pyplot as plt
-torch.cuda.current_device()
 
 def get_args():
     parser = argparse.ArgumentParser(
@@ -51,7 +50,6 @@ def train(opt):
         os.makedirs(opt.saved_path)
     mp = _mp.get_context("spawn")
     envs = MultipleEnvironments(opt.world, opt.stage, opt.action_type, opt.num_processes)
-
     model = PPO(envs.num_states, envs.num_actions)
     if torch.cuda.is_available():
         model.cuda()
@@ -171,6 +169,5 @@ def train(opt):
 
 
 if __name__ == "__main__":
-    torch.multiprocessing.freeze_support()
     opt = get_args()
     train(opt)

@@ -5,3 +5,5 @@
 This is a repo of using some RL algorithms to play super-mario-bros game. 
 
 ## demo
+
+![](ppo\demo\demo_1_1.gif)
